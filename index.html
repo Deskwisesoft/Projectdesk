@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project Desk — User Guide</title>
+<meta name="description" content="Project Desk user guide: offline project management for Windows with Gantt timeline, Kanban board, checklists, budgets, costs and invoicing.">
+<style>
+  :root{--bg:#f6f7f7;--surface:#fff;--ink:#24292b;--muted:#596265;--accent:#0e6f6e;--soft:#e2f1f0;--line:#d7dcdd}
+  @media (prefers-color-scheme:dark){:root{--bg:#0d1011;--surface:#161a1b;--ink:#eef1f1;--muted:#a5afb1;--accent:#4cc3bf;--soft:#0f2b2a;--line:#2b3133}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Segoe UI",system-ui,sans-serif}
+  header{background:linear-gradient(90deg,#0e6f6e,#13807f);color:#fff;padding:48px 20px 40px}
+  header div,main{max-width:900px;margin:0 auto}
+  header h1{margin:0;font-size:36px}
+  header p{margin:8px 0 0;font-size:18px;opacity:.92;max-width:640px}
+  main{padding:24px 20px 64px}
+  nav{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:0 0 28px}
+  nav ol{margin:6px 0 0;padding-left:20px;columns:2;column-gap:32px}
+  h2{font-size:24px;margin:44px 0 6px;color:var(--accent)}
+  h3{font-size:18px;margin:22px 0 4px}
+  img{width:100%;border:1px solid var(--line);border-radius:10px;margin:12px 0 4px;display:block}
+  .cap{color:var(--muted);font-size:14px;margin:0 0 8px}
+  .tip{background:var(--soft);border-radius:10px;padding:12px 16px;margin:14px 0}
+  table{border-collapse:collapse;width:100%;margin:10px 0;background:var(--surface)}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;font-size:15px}
+  th{background:var(--soft)}
+  kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;font-size:13px;background:var(--surface)}
+  @media (max-width:640px){nav ol{columns:1}header h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header><div>
+  <h1>Project Desk</h1>
+  <p>Plan projects, track tasks and control budgets — all on your own PC. No account, no subscription, no cloud.</p>
+</div></header>
+<main>
+<nav><b>Contents</b>
+  <ol>
+    <li><a href="#start">Getting started</a></li>
+    <li><a href="#structure">How your work is organised</a></li>
+    <li><a href="#home">Home: your portfolio</a></li>
+    <li><a href="#health">Project health and progress</a></li>
+    <li><a href="#project">The project page</a></li>
+    <li><a href="#tasks">Tasks and checklists</a></li>
+    <li><a href="#board">Kanban board</a></li>
+    <li><a href="#timeline">Gantt timeline</a></li>
+    <li><a href="#money">Budget, costs and invoicing</a></li>
+    <li><a href="#subs">Subcontractors and materials</a></li>
+    <li><a href="#mine">My tasks</a></li>
+    <li><a href="#report">Status updates and PDF report</a></li>
+    <li><a href="#data">Backups, export and privacy</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ol>
+</nav>
+
+<h2 id="start">1. Getting started</h2>
+<p>Open Project Desk from the Start menu. The first time, type your name and click <b>Get started</b>. There is no
+account or password: your name is used as the owner of the projects you create and in the activity history.</p>
+<ol>
+  <li>Click <b>+ Project</b>, give it a name, choose (or create) the client and site, and set the start and planned end dates.</li>
+  <li>Open the project and click <b>+ Task</b> to add work, with an owner, due date and priority.</li>
+  <li>Optionally add the people you work with under <b>your name (top right) → People</b>.</li>
+</ol>
+<div class="tip">Tip: press <kbd>/</kbd> anywhere to search projects and tasks.</div>
+
+<h2 id="structure">2. How your work is organised</h2>
+<p>Project Desk follows a simple hierarchy:</p>
+<table>
+  <tr><th>Level</th><th>Example</th><th>What it holds</th></tr>
+  <tr><td><b>Client</b></td><td>Smith Construction Ltd</td><td>Contact details and all of the client's sites</td></tr>
+  <tr><td><b>Site</b></td><td>Riverside warehouse</td><td>A building, shop, facility or location (type, size, address)</td></tr>
+  <tr><td><b>Project</b></td><td>Warehouse refurbishment</td><td>Dates, owner, status, budget, costs, invoices, subcontracts, materials</td></tr>
+  <tr><td><b>Task</b></td><td>Demolition</td><td>Owner, dates, priority, checklist, notes, comments and history</td></tr>
+</table>
+<p><b>People</b> are the colleagues, foremen or partners you assign as owners. They don't use the app and don't need an account.</p>
+
+<h2 id="home">3. Home: your portfolio</h2>
+<img src="screenshots/1-portfolio.png" alt="Portfolio dashboard">
+<p class="cap">The Home screen shows every project, worst first.</p>
+<p>At the top, indicator cards count projects <b>at risk</b>, <b>needing attention</b>, <b>on track</b> and the total of
+<b>late tasks</b> — click a card to filter. The filter bar narrows the view by owner, client, site or status, and
+<b>My projects</b> shows only the projects you own. Below you find the project list (progress, planned end, next due task
+and the latest status update), the timeline, your clients with their actual cost and invoiced totals, and the recent activity.</p>
+
+<h2 id="health">4. Project health and progress</h2>
+<p>Each project gets a status automatically:</p>
+<table>
+  <tr><th>Status</th><th>When</th></tr>
+  <tr><td><b>At risk</b></td><td>The planned end has passed, or there are late tasks.</td></tr>
+  <tr><td><b>Needs attention</b></td><td>Progress is more than 15 points behind the share of time already elapsed, or tasks have been stalled (in progress without changes) for over 14 days.</td></tr>
+  <tr><td><b>On track</b></td><td>None of the above.</td></tr>
+  <tr><td><b>Ready to close</b></td><td>All tasks are done — mark the project as done.</td></tr>
+  <tr><td><b>No data</b></td><td>No planned end and no tasks yet.</td></tr>
+</table>
+<p><b>% complete</b> is realistic: a finished task counts 100%, and an open task counts the share of its checklist already ticked.
+A task with 3 of 5 checklist items done adds 60% of a task to the project's progress.</p>
+
+<h2 id="project">5. The project page</h2>
+<img src="screenshots/2-project.png" alt="Project page">
+<p class="cap">Header with dates, site, client contact, owner and health; then tabs for tasks and money.</p>
+<p>The <b>Tasks</b> tab shows progress, days until the planned end, late and stalled tasks, the latest <b>status update</b>,
+<b>Needs attention</b> (alerts and late or upcoming tasks), the project timeline and the full task list grouped by status.
+Other tabs: <b>Budget and costs</b>, <b>Invoicing</b>, <b>Subcontractors</b> and <b>Materials</b>. Use <b>Edit</b> to change
+dates, owner, status, client, site or colour.</p>
+
+<h2 id="tasks">6. Tasks and checklists</h2>
+<p>A task has a title, project, status (To do, In progress, In review, Done), start and due dates, priority, owner, notes
+and an optional <b>milestone</b> flag for key dates such as a permit or handover. Mark a task done with the round check
+button, or move it a step forward with the button on the right.</p>
+<p><b>Checklists:</b> open a task and add items under <i>Checklist</i>. In every list and on the board the task shows a small
+progress bar (for example <b>3/5</b>); click it to open the checklist and tick items on the spot — progress updates instantly.</p>
+<p>Each task keeps <b>comments</b> and a full <b>history</b> of changes (who changed what, and when).</p>
+
+<h2 id="board">7. Kanban board</h2>
+<img src="screenshots/3-board.png" alt="Kanban board">
+<p class="cap">Drag cards between columns, or use the buttons on each card.</p>
+<p>The board shows active projects' tasks in four columns. Filter by project or tick <b>Only mine</b>. Cards show the
+project, priority, due date or days late, checklist progress and owner. <b>+ Add</b> creates a task directly in a column.</p>
+
+<h2 id="timeline">8. Gantt timeline</h2>
+<img src="screenshots/4-timeline.png" alt="Gantt timeline">
+<p class="cap">Projects and their tasks on a timeline, with milestones (◆) and today's line.</p>
+<p>Each project bar is filled according to its % complete; a red outline means at risk, amber means needs attention.
+Click the arrow next to a project to show its tasks, or <b>Show all tasks</b>. Late work is drawn in red with hatching up to
+today. Choose <b>Fit</b>, <b>Month</b> or <b>Week</b> to change the scale.</p>
+
+<h2 id="money">9. Budget, costs and invoicing</h2>
+<img src="screenshots/5-budget-and-costs.png" alt="Budget and costs">
+<p class="cap">Contract value, budget, actual cost and expected margin for each project.</p>
+<ul>
+  <li><b>Contract value</b>: the price agreed with the client.</li>
+  <li><b>Budget</b>: planned cost lines by category (materials, subcontracts, labour, equipment, other) with quantity and unit price.</li>
+  <li><b>Costs</b>: actual bills and expenses as they come in, with supplier, subcontractor and document number.</li>
+  <li><b>Budget vs. actual</b>: per category, with the percentage spent; a project over budget raises an alert.</li>
+  <li><b>Expected margin</b>: contract value minus the budget (or the actual cost, if higher).</li>
+  <li><b>Invoicing</b>: invoices or progress claims issued to the client; mark them as paid. Invoices unpaid for over 60 days raise an alert.</li>
+</ul>
+<p>Use <b>Export (Excel)</b> on the Budget and costs tab to get a spreadsheet of the project's costs. Choose your currency in <b>Settings</b>.</p>
+
+<h2 id="subs">10. Subcontractors and materials</h2>
+<p>Keep your <b>subcontractors</b> (specialty, tax ID, contact, phone, email) under <b>your name → Subcontractors</b>. In a
+project, the <b>Subcontractors</b> tab records each subcontract with scope, value, status and dates, and shows how much has
+already been billed through costs. The <b>Materials</b> tab tracks each material from <i>Requested</i> to <i>Ordered</i> to
+<i>Delivered</i>, with the date it is needed — late materials and subcontracts past their end date are flagged automatically.</p>
+
+<h2 id="mine">11. My tasks</h2>
+<img src="screenshots/6-my-tasks.png" alt="My tasks">
+<p class="cap">Everything assigned to one person, sorted by urgency.</p>
+<p>Choose yourself or anyone in People to see their open tasks grouped as <b>Late</b>, <b>Next 7 days</b>, <b>Later</b> and
+<b>No due date</b>, plus what they finished in the last 14 days.</p>
+
+<h2 id="report">12. Status updates and PDF report</h2>
+<p>On each project, click <b>Write</b> (or <b>Update</b>) under <i>Status update</i> to record progress, blockers and next steps.
+Updates older than 14 days are flagged as out of date.</p>
+<p>On Home, <b>Report (PDF)</b> prints a professional portfolio report for the projects currently filtered: a summary,
+health of every project, timeline, upcoming milestones, a sheet per project and the list of late tasks. Choose
+<i>Microsoft Print to PDF</i> in the print dialog to save it as a PDF.</p>
+
+<h2 id="data">13. Backups, export and privacy</h2>
+<ul>
+  <li>Your data is stored only on your PC. Project Desk never connects to the internet.</li>
+  <li>A <b>backup</b> is made automatically once a day; the last 14 are kept. By default they go to
+    <i>Documents\Project Desk\Backups</i> — change the folder in <b>Settings</b> (a OneDrive folder or external drive is a good choice).</li>
+  <li><b>Settings → Back up now</b> makes a copy at any time; <b>Restore a backup</b> brings any copy back (your current data is backed up first).</li>
+  <li><b>Export tasks (Excel)</b> and <b>Export everything (JSON)</b> give you your data in open formats.</li>
+</ul>
+<div class="tip">Moving to a new PC? Install Project Desk there, copy a backup file into the backup folder and use <b>Settings → Restore a backup</b>.</div>
+
+<h2 id="faq">14. FAQ</h2>
+<h3>Do I need an internet connection or an account?</h3>
+<p>No. Project Desk works fully offline and has no accounts.</p>
+<h3>Can several people use it at the same time?</h3>
+<p>Project Desk is designed for one user per PC. Add colleagues under People to assign them work and share the PDF report or Excel exports with them.</p>
+<h3>What happens to my data if I uninstall?</h3>
+<p>Uninstalling removes the app's database, but backups in your backup folder are kept. Restore one after reinstalling to get everything back.</p>
+<h3>Does it support my currency?</h3>
+<p>Euro, US dollar, pound sterling, Swiss franc, Brazilian real, Canadian dollar and Australian dollar — choose in Settings.</p>
+<h3>Dark mode?</h3>
+<p>Yes — it follows your Windows light or dark setting automatically.</p>
+<img src="screenshots/7-dark-mode.png" alt="Dark mode">
+<h2>Support</h2>
+<p>Questions, ideas or a problem? Email <a href="mailto:deskwisesoftware@gmail.com">deskwisesoftware@gmail.com</a> — we usually reply within two working days. Read our <a href="privacy-policy.html">privacy policy</a>.</p>
+</main>
+</body>
+</html>
