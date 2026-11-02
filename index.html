@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Project Desk — User Guide</title>
-<meta name="description" content="Project Desk user guide: offline project management for Windows with Gantt timeline, Kanban board, checklists, budgets, costs and invoicing.">
+<meta name="description" content="Project Desk user guide: offline project management for Windows with Gantt timeline with dependencies and baseline, calendar, Kanban board, checklists, documents, budgets, costs and invoicing.">
 <style>
   :root{--bg:#f6f7f7;--surface:#fff;--ink:#24292b;--muted:#596265;--accent:#0e6f6e;--soft:#e2f1f0;--line:#d7dcdd}
   @media (prefers-color-scheme:dark){:root{--bg:#0d1011;--surface:#161a1b;--ink:#eef1f1;--muted:#a5afb1;--accent:#4cc3bf;--soft:#0f2b2a;--line:#2b3133}}
@@ -43,12 +43,15 @@
     <li><a href="#health">Project health and progress</a></li>
     <li><a href="#project">The project page</a></li>
     <li><a href="#tasks">Tasks and checklists</a></li>
+    <li><a href="#deps">Task dependencies</a></li>
     <li><a href="#board">Kanban board</a></li>
-    <li><a href="#timeline">Gantt timeline</a></li>
+    <li><a href="#timeline">Gantt timeline and baseline</a></li>
+    <li><a href="#calendar">Calendar and Outlook export</a></li>
+    <li><a href="#docs">Documents</a></li>
     <li><a href="#money">Budget, costs and invoicing</a></li>
-    <li><a href="#subs">Subcontractors and materials</a></li>
+    <li><a href="#subs">Suppliers, contracts and orders</a></li>
     <li><a href="#mine">My tasks</a></li>
-    <li><a href="#report">Status updates and PDF report</a></li>
+    <li><a href="#report">Status updates and PDF reports</a></li>
     <li><a href="#data">Backups, export and privacy</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ol>
@@ -68,20 +71,25 @@ account or password: your name is used as the owner of the projects you create a
 <p>Project Desk follows a simple hierarchy:</p>
 <table>
   <tr><th>Level</th><th>Example</th><th>What it holds</th></tr>
-  <tr><td><b>Client</b></td><td>Smith Construction Ltd</td><td>Contact details and all of the client's sites</td></tr>
-  <tr><td><b>Site</b></td><td>Riverside warehouse</td><td>A building, shop, facility or location (type, size, address)</td></tr>
-  <tr><td><b>Project</b></td><td>Warehouse refurbishment</td><td>Dates, owner, status, budget, costs, invoices, subcontracts, materials</td></tr>
-  <tr><td><b>Task</b></td><td>Demolition</td><td>Owner, dates, priority, checklist, notes, comments and history</td></tr>
+  <tr><td><b>Client</b></td><td>Smith &amp; Co</td><td>Contact details and all of the client's sites</td></tr>
+  <tr><td><b>Site</b></td><td>Riverside warehouse</td><td>A building, facility, piece of equipment, location or area (type, size, address) and its own documents</td></tr>
+  <tr><td><b>Project</b></td><td>Warehouse refurbishment</td><td>Dates, owner, status, documents, budget, costs, invoices, contracts, orders</td></tr>
+  <tr><td><b>Task</b></td><td>Demolition</td><td>Owner, dates, priority, previous tasks, checklist, notes, comments and history</td></tr>
 </table>
-<p><b>People</b> are the colleagues, foremen or partners you assign as owners. They don't use the app and don't need an account.</p>
+<p><b>Your own words:</b> “Site” may not fit your work. In <b>Settings → Terminology</b> choose <i>Asset</i>, <i>Location</i>,
+<i>Area</i>, <i>Department</i>, <i>Product</i> or type your own word (for example <i>Event</i> / <i>Events</i>). The whole app,
+the reports and the exports use the name you choose. Your data does not change.</p>
+<p>Give each site a <b>type</b> (for example <i>Office</i> or <i>Hydro power plant</i>): the types you create are offered
+for your next sites, and you can filter projects by type on Home.</p>
+<p><b>People</b> are the colleagues or partners you assign as owners. They don't use the app and don't need an account.</p>
 
 <h2 id="home">3. Home: your portfolio</h2>
 <img src="screenshots/1-portfolio.png" alt="Portfolio dashboard">
 <p class="cap">The Home screen shows every project, worst first.</p>
 <p>At the top, indicator cards count projects <b>at risk</b>, <b>needing attention</b>, <b>on track</b> and the total of
-<b>late tasks</b> — click a card to filter. The filter bar narrows the view by owner, client, site or status, and
-<b>My projects</b> shows only the projects you own. Below you find the project list (progress, planned end, next due task
-and the latest status update), the timeline, your clients with their actual cost and invoiced totals, and the recent activity.</p>
+<b>late tasks</b> — click a card to filter. The filter bar narrows the view by owner, client, site, type or status, and
+<b>My projects</b> shows only the projects you own. Below you find the project list (progress, planned end, slip against the
+baseline, next due task and the latest status update), the timeline, your clients and the recent activity.</p>
 
 <h2 id="health">4. Project health and progress</h2>
 <p>Each project gets a status automatically:</p>
@@ -98,76 +106,130 @@ A task with 3 of 5 checklist items done adds 60% of a task to the project's prog
 
 <h2 id="project">5. The project page</h2>
 <img src="screenshots/2-project.png" alt="Project page">
-<p class="cap">Header with dates, site, client contact, owner and health; then tabs for tasks and money.</p>
+<p class="cap">Header with dates, site, client contact, owner and health; then tabs for tasks, documents and money.</p>
 <p>The <b>Tasks</b> tab shows progress, days until the planned end, late and stalled tasks, the latest <b>status update</b>,
 <b>Needs attention</b> (alerts and late or upcoming tasks), the project timeline and the full task list grouped by status.
-Other tabs: <b>Budget and costs</b>, <b>Invoicing</b>, <b>Subcontractors</b> and <b>Materials</b>. Use <b>Edit</b> to change
-dates, owner, status, client, site or colour.</p>
+Other tabs: <b>Documents</b>, <b>Budget and costs</b>, <b>Invoicing</b>, <b>Contracts</b> and <b>Orders</b>. In the header,
+<b>Report (PDF)</b> prints a report of this project, <b>Baseline</b> saves the planned dates and <b>Edit</b> changes dates,
+owner, status, client, site or colour.</p>
 
 <h2 id="tasks">6. Tasks and checklists</h2>
-<p>A task has a title, project, status (To do, In progress, In review, Done), start and due dates, priority, owner, notes
-and an optional <b>milestone</b> flag for key dates such as a permit or handover. Mark a task done with the round check
-button, or move it a step forward with the button on the right.</p>
+<p>A task has a title, project, status (To do, In progress, In review, Done), start and due dates, priority, owner, notes,
+hours spent and an optional <b>milestone</b> flag for key dates such as a permit or handover. Mark a task done with the round
+check button, or move it a step forward with the button on the right.</p>
 <p><b>Checklists:</b> open a task and add items under <i>Checklist</i>. In every list and on the board the task shows a small
 progress bar (for example <b>3/5</b>); click it to open the checklist and tick items on the spot — progress updates instantly.</p>
 <p>Each task keeps <b>comments</b> and a full <b>history</b> of changes (who changed what, and when).</p>
 
-<h2 id="board">7. Kanban board</h2>
+<h2 id="deps">7. Task dependencies</h2>
+<p>Many tasks can only start when another one is finished. Open a task and, under <b>Starts after</b>, click
+<b>+ Add a previous task</b>. For each previous task choose:</p>
+<ul>
+  <li><b>after it ends</b> (the usual case) or <b>when it starts</b> (both run at the same time);</li>
+  <li>a <b>gap in working days</b>: for example <i>3</i> to wait for concrete to cure, or a negative number to overlap.</li>
+</ul>
+<p><b>Working days:</b> in <b>Settings → Working days</b> choose the days you work (Monday to Friday by default) and add your
+holidays. Gaps and automatic moves skip non-working days, and the Calendar shows the holidays.</p>
+<p>When a previous task moves later, the tasks that follow it <b>move later automatically</b>, keeping their duration in working days. A
+message says how many tasks moved; click <b>Undo</b> to put them back. Tasks never move earlier on their own, and finished
+tasks never move. Project Desk does not let you create a loop (A after B after A).</p>
+<p>On the board, a task whose previous task isn't finished shows <b>⏳ Waiting for: …</b>. On the timeline, arrows link the
+tasks, and the <b>critical path</b> is outlined: the tasks where any delay delays the end of the project.</p>
+
+<h2 id="board">8. Kanban board</h2>
 <img src="screenshots/3-board.png" alt="Kanban board">
 <p class="cap">Drag cards between columns, or use the buttons on each card.</p>
 <p>The board shows active projects' tasks in four columns. Filter by project or tick <b>Only mine</b>. Cards show the
-project, priority, due date or days late, checklist progress and owner. <b>+ Add</b> creates a task directly in a column.</p>
+project, priority, due date or days late, what the task is waiting for, checklist progress and owner. <b>+ Add</b> creates a
+task directly in a column.</p>
 
-<h2 id="timeline">8. Gantt timeline</h2>
+<h2 id="timeline">9. Gantt timeline and baseline</h2>
 <img src="screenshots/4-timeline.png" alt="Gantt timeline">
 <p class="cap">Projects and their tasks on a timeline, with milestones (◆) and today's line.</p>
 <p>Each project bar is filled according to its % complete; a red outline means at risk, amber means needs attention.
 Click the arrow next to a project to show its tasks, or <b>Show all tasks</b>. Late work is drawn in red with hatching up to
 today. Choose <b>Fit</b>, <b>Month</b> or <b>Week</b> to change the scale.</p>
+<p><b>Baseline:</b> when the plan is agreed (for example, approved by the client), open the project and click
+<b>Baseline → Save baseline</b>. Project Desk keeps a copy of the project's and tasks' dates. From then on the timeline shows
+the agreed dates as a thin grey bar under each bar, and the project, Home and reports show the <b>slip</b>: how many days
+later (or earlier) things are than agreed. When a change of plan is approved, save a new baseline with a note; earlier ones
+stay in the history.</p>
 
-<h2 id="money">9. Budget, costs and invoicing</h2>
+<h2 id="calendar">10. Calendar and Outlook export</h2>
+<p>The <b>Calendar</b> tab shows task due dates, milestones (◆) and project ends (⚑) by <b>month</b> or <b>week</b>, in each
+project's colour. Filter by person, client, site or project.</p>
+<ul>
+  <li><b>Drag</b> a task to another day to change its due date (its start moves with it, and the tasks that come after it follow).</li>
+  <li><b>Click</b> an empty part of a day to add a task due that day.</li>
+</ul>
+<p><b>Export to calendar (.ics)</b> (in the Calendar, or on a project's timeline) downloads a calendar file that opens in
+Outlook, Google Calendar or your phone. Choose <i>Only my tasks</i> or include completed tasks. It is a copy, not a live link
+(Project Desk doesn't use the internet): when dates change, export again and the events are updated instead of duplicated.</p>
+
+<h2 id="docs">11. Documents</h2>
+<p>Attach contracts, drawings, photos, reports and invoices — just drag files onto the app or click <i>choose files…</i>:</p>
+<ul>
+  <li>to a <b>project</b> (the <b>Documents</b> tab lists every file of the project, including those of its tasks, costs and invoices);</li>
+  <li>to a <b>task</b>, a <b>cost</b> or an <b>invoice</b>, in its form;</li>
+  <li>to a <b>site</b>: permits, drawings, manuals and maintenance contracts that belong to the site and not to one project.
+    They are listed on the site's page and stay there when projects end.</li>
+</ul>
+<p>Files are copied, with their original names, to <i>Documents\Project Desk\Attachments</i> (site documents go in its
+<i>Sites</i> folder), so you can always open them, even without the app. <b>Remove</b> only takes a file out of the app;
+the file stays in the folder. PDF, images, Office, text and drawing files up to 25 MB are accepted.</p>
+
+<h2 id="money">12. Budget, costs and invoicing</h2>
 <img src="screenshots/5-budget-and-costs.png" alt="Budget and costs">
 <p class="cap">Contract value, budget, actual cost and expected margin for each project.</p>
 <ul>
   <li><b>Contract value</b>: the price agreed with the client.</li>
-  <li><b>Budget</b>: planned cost lines by category (materials, subcontracts, labour, equipment, other) with quantity and unit price.</li>
-  <li><b>Costs</b>: actual bills and expenses as they come in, with supplier, subcontractor and document number.</li>
-  <li><b>Budget vs. actual</b>: per category, with the percentage spent; a project over budget raises an alert.</li>
+  <li><b>Budget</b>: planned cost lines by category (materials, contracts, labour, equipment, other) with quantity and unit price.
+    Pick lines from your <b>Price list</b> (menu under your name) to avoid typing prices, or copy the budget of a similar project.</li>
+  <li><b>Costs</b>: actual bills and expenses as they come in, with supplier and document number.</li>
+  <li><b>Budget vs. actual</b>: per category, with the percentage spent; a category over budget raises an alert.</li>
+  <li><b>Margin and proposed price</b>: set your margin to get the price to propose, use it as the contract value in one click
+    and print a client summary that never shows your costs.</li>
   <li><b>Expected margin</b>: contract value minus the budget (or the actual cost, if higher).</li>
-  <li><b>Invoicing</b>: invoices or progress claims issued to the client; mark them as paid. Invoices unpaid for over 60 days raise an alert.</li>
+  <li><b>Invoicing</b>: invoices issued to the client, with their due date; mark them as paid. Overdue invoices raise an alert.</li>
 </ul>
 <p>Use <b>Export (Excel)</b> on the Budget and costs tab to get a spreadsheet of the project's costs. Choose your currency in <b>Settings</b>.</p>
 
-<h2 id="subs">10. Subcontractors and materials</h2>
-<p>Keep your <b>subcontractors</b> (specialty, tax ID, contact, phone, email) under <b>your name → Subcontractors</b>. In a
-project, the <b>Subcontractors</b> tab records each subcontract with scope, value, status and dates, and shows how much has
-already been billed through costs. The <b>Materials</b> tab tracks each material from <i>Requested</i> to <i>Ordered</i> to
-<i>Delivered</i>, with the date it is needed — late materials and subcontracts past their end date are flagged automatically.</p>
+<h2 id="subs">13. Suppliers, contracts and orders</h2>
+<p>Keep your <b>suppliers</b> (specialty, tax ID, contact, phone, email) under <b>your name → Suppliers</b>. In a project, the
+<b>Contracts</b> tab records who does each part of the work, with scope, value, status and dates, and shows how much has
+already been billed through costs. The <b>Orders</b> tab tracks materials, equipment or services from <i>Requested</i> to
+<i>Ordered</i> to <i>Delivered</i>, with the date they are needed — late orders and contracts past their end date are
+flagged automatically.</p>
 
-<h2 id="mine">11. My tasks</h2>
+<h2 id="mine">14. My tasks</h2>
 <img src="screenshots/6-my-tasks.png" alt="My tasks">
 <p class="cap">Everything assigned to one person, sorted by urgency.</p>
 <p>Choose yourself or anyone in People to see their open tasks grouped as <b>Late</b>, <b>Next 7 days</b>, <b>Later</b> and
 <b>No due date</b>, plus what they finished in the last 14 days.</p>
 
-<h2 id="report">12. Status updates and PDF report</h2>
+<h2 id="report">15. Status updates and PDF reports</h2>
 <p>On each project, click <b>Write</b> (or <b>Update</b>) under <i>Status update</i> to record progress, blockers and next steps.
 Updates older than 14 days are flagged as out of date.</p>
-<p>On Home, <b>Report (PDF)</b> prints a professional portfolio report for the projects currently filtered: a summary,
-health of every project, timeline, upcoming milestones, a sheet per project and the list of late tasks. Choose
-<i>Microsoft Print to PDF</i> in the print dialog to save it as a PDF.</p>
+<p>On Home, <b>Report (PDF)</b> prints a portfolio report for the projects currently filtered: a summary, health of every
+project, timeline, upcoming milestones, a sheet per project and the list of late tasks.</p>
+<p>On a project, <b>Report (PDF)</b> prints a 1–2 page report of that project: status, progress, slip against the baseline,
+the latest status update, milestones, late tasks, next steps for the coming two weeks and the timeline. Tick
+<i>Include costs and budget</i> for an internal report; leave it unticked for a report to send to the client.</p>
+<p>Choose <i>Microsoft Print to PDF</i> in the print dialog to save a report as a PDF.</p>
 
-<h2 id="data">13. Backups, export and privacy</h2>
+<h2 id="data">16. Backups, export and privacy</h2>
 <ul>
   <li>Your data is stored only on your PC. Project Desk never connects to the internet.</li>
   <li>A <b>backup</b> is made automatically once a day; the last 14 are kept. By default they go to
     <i>Documents\Project Desk\Backups</i> — change the folder in <b>Settings</b> (a OneDrive folder or external drive is a good choice).</li>
   <li><b>Settings → Back up now</b> makes a copy at any time; <b>Restore a backup</b> brings any copy back (your current data is backed up first).</li>
-  <li><b>Export tasks (Excel)</b> and <b>Export everything (JSON)</b> give you your data in open formats.</li>
+  <li><b>Export tasks (Excel)</b>, <b>Export everything (JSON)</b> and <b>Export to calendar (.ics)</b> give you your data in open formats.</li>
+  <li>When Project Desk is updated, a copy of your data is saved first, and everything you had is kept.</li>
 </ul>
-<div class="tip">Moving to a new PC? Install Project Desk there, copy a backup file into the backup folder and use <b>Settings → Restore a backup</b>.</div>
+<div class="tip">Moving to a new PC? Install Project Desk there, copy a backup file into the backup folder and use <b>Settings → Restore a backup</b>.
+Copy the <i>Documents\Project Desk\Attachments</i> folder too, to bring your documents.</div>
 
-<h2 id="faq">14. FAQ</h2>
+<h2 id="faq">17. FAQ</h2>
 <h3>Do I need an internet connection or an account?</h3>
 <p>No. Project Desk works fully offline and has no accounts.</p>
 <h3>Can several people use it at the same time?</h3>
